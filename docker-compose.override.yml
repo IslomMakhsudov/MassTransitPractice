@@ -1,0 +1,13 @@
+﻿services:
+  rabbitmq:
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  producer:
+    ports:
+      - "5089:8080"
+
+  consumer:
+    ports:
+      - "5027:8080"
