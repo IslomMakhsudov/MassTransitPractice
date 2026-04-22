@@ -8,4 +8,5 @@ public class OrderState : SagaStateMachineInstance
     public string CurrentState { get; set; } = string.Empty;
     public string ProductName { get; set; } = string.Empty;
     public DateTime PlacedAt { get; set; }
+    public string? CancellationReason { get; set; }
 }
