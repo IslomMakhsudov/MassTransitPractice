@@ -46,3 +46,67 @@
       RabbitMQ__Host: rabbitmq://rabbitmq
       RabbitMQ__Username: guest
       RabbitMQ__Password: guest
+
+  order-service:
+    image: order-service
+    build:
+      context: .
+      dockerfile: OrderService/Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DOTNET_ENVIRONMENT: Development
+      ASPNETCORE_HTTP_PORTS: "8080"
+      RabbitMQ__Host: rabbitmq://rabbitmq
+      RabbitMQ__Username: guest
+      RabbitMQ__Password: guest
+      ConnectionStrings__DefaultConnection: "Data Source=/data/orders.db"
+    volumes:
+      - order-data:/data
+
+  inventory-service:
+    image: inventory-service
+    build:
+      context: .
+      dockerfile: InventoryService/Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      DOTNET_ENVIRONMENT: Development
+      RabbitMQ__Host: rabbitmq://rabbitmq
+      RabbitMQ__Username: guest
+      RabbitMQ__Password: guest
+
+  payment-service:
+    image: payment-service
+    build:
+      context: .
+      dockerfile: PaymentService/Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      DOTNET_ENVIRONMENT: Development
+      RabbitMQ__Host: rabbitmq://rabbitmq
+      RabbitMQ__Username: guest
+      RabbitMQ__Password: guest
+
+  notification-service:
+    image: notification-service
+    build:
+      context: .
+      dockerfile: NotificationService/Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      DOTNET_ENVIRONMENT: Development
+      RabbitMQ__Host: rabbitmq://rabbitmq
+      RabbitMQ__Username: guest
+      RabbitMQ__Password: guest
+
+volumes:
+  order-data:
