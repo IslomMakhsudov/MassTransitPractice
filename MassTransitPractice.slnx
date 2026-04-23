@@ -2,4 +2,5 @@
   <Project Path="CommonResources/CommonResources.csproj" />
   <Project Path="Consumer/Consumer.csproj" />
   <Project Path="Producer/Producer.csproj" />
+  <Project Path="SharedContracts/SharedContracts.csproj" />
 </Solution>
