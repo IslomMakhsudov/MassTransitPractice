@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(dotnet new classlib *)",
+      "Bash(dotnet sln add *)",
+      "Bash(dotnet build *)",
+      "Bash(git commit *)",
+      "Bash(xargs wc *)",
+      "Bash(grep -E \"\\\\.cs$\")",
+      "Bash(dotnet new worker *)",
+      "Bash(dotnet sln *)",
+      "Bash(dotnet add *)",
+      "Bash(dotnet new xunit *)",
+      "Bash(dotnet test *)"
+    ]
+  }
+}
