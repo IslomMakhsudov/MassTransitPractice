@@ -158,4 +158,19 @@ public class QueueSenderController : ControllerBase
 
         return Ok(new { Message = "OrderCompleted published — check Consumer logs to see saga finish", OrderId = orderId });
     }
+
+    [HttpPost("saga/cancel-order/{orderId:guid}")]
+    public async Task<IActionResult> CancelOrder(Guid orderId, [FromQuery] string reason = "Customer requested cancellation")
+    {
+        _logger.LogInformation(">>> SAGA | Cancelling order {OrderId}, reason: {Reason}", orderId, reason);
+
+        await _bus.Publish(new OrderCancelled { OrderId = orderId, Reason = reason });
+
+        return Ok(new
+        {
+            Message = "OrderCancelled published — check Consumer logs to see compensation action",
+            OrderId = orderId,
+            Reason = reason
+        });
+    }
 }
