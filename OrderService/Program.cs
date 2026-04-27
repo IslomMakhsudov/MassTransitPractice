@@ -1,10 +1,16 @@
-using MassTransit;
+﻿using MassTransit;
+
 using Microsoft.EntityFrameworkCore;
+
 using OrderService.Saga;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new() { Title = "OrderService API", Version = "v1" });
+});
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
     ?? "Data Source=orders.db";
@@ -39,6 +45,17 @@ using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<OrderSagaDbContext>();
     db.Database.EnsureCreated();
+}
+
+if (app.Environment.IsDevelopment())
+{
+    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "OrderService API v1");
+        options.RoutePrefix = "swagger";
+    });
 }
 
 app.MapControllers();

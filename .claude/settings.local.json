@@ -13,7 +13,26 @@
       "Bash(dotnet sln *)",
       "Bash(dotnet add *)",
       "Bash(dotnet new xunit *)",
-      "Bash(dotnet test *)"
+      "Bash(dotnet test *)",
+      "Bash(git -C /c/repos/MassTransitPractice rev-parse HEAD)",
+      "Bash(dotnet package *)",
+      "Bash(dotnet clean *)",
+      "Bash(dotnet nuget *)",
+      "Bash(dotnet list *)",
+      "WebSearch",
+      "WebFetch(domain:masstransit.io)",
+      "WebFetch(domain:masstransit.massient.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:www.nuget.org)",
+      "Bash(dotnet restore *)",
+      "Bash(dotnet-ildasm /c/Users/islom/.nuget/packages/masstransit.entityframeworkcore/8.3.6/lib/net9.0/MassTransit.EntityFrameworkCoreIntegration.dll)",
+      "Bash(powershell.exe -Command 'Add-Type -Path '\\\\''C:/Users/islom/.nuget/packages/masstransit.entityframeworkcore/8.3.6/lib/net9.0/MassTransit.EntityFrameworkCoreIntegration.dll'\\\\''; [System.AppDomain]::CurrentDomain.GetAssemblies\\(\\) | Where-Object { $_.GetName\\(\\).Name -eq '\\\\''MassTransit.EntityFrameworkCoreIntegration'\\\\'' } | ForEach-Object { $_.GetTypes\\(\\) | Where-Object { $_.Name -like '\\\\''*SagaClass*'\\\\'' } | Select-Object FullName }')",
+      "Bash(0-9]*\" | grep -v \"EntityFrameworkCore\\\\|IPublish\\\\|ISend\" | sort | head -30)",
+      "Bash(grep -oE \"T:MassTransit\\\\.[A-Za-z.`0-9]*\" | grep -v \"EntityFrameworkCore\\\\|IPublish\\\\|ISend\" | sort | head -30)",
+      "Bash(xargs grep *)",
+      "Bash(git -C /c/repos/MassTransitPractice add -A)",
+      "Bash(git -C /c/repos/MassTransitPractice status)",
+      "Bash(git *)"
     ]
   }
 }

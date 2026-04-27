@@ -1,5 +1,7 @@
-using MassTransit;
+﻿using MassTransit;
+
 using PaymentService.Simulation;
+
 using SharedContracts;
 
 namespace PaymentService.Consumers;

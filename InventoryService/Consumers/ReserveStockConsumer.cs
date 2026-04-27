@@ -1,5 +1,7 @@
-using InventoryService.Simulation;
+﻿using InventoryService.Simulation;
+
 using MassTransit;
+
 using SharedContracts;
 
 namespace InventoryService.Consumers;
