@@ -13,11 +13,8 @@ var rabbitPass = builder.Configuration["RabbitMQ:Password"]!;
 
 builder.Services.AddMassTransit(x =>
 {
-    // --- Existing consumers ---
-    x.AddConsumer<AccountCommandConsumer>();
-    x.AddConsumer<ClientEventConsumer>();
-    x.AddConsumer<TransferDataRequestConsumer>();
-
+  
+    x.AddConsumers(typeof(Program).Assembly);
     // --- Pattern 1: Retry ---
     x.AddConsumer<RetryCommandConsumer>();
 
